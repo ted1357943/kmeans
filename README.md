@@ -3,8 +3,7 @@
 - sepallength(萼片長度)
 - sepalwidth(萼片寬度)
 - petallengh(花瓣長度)
-- petalwidth(花瓣寬度) 
-原資料已事先分為Iris-setosa、Iris-versicolor、Iris-virginica三類  
+- petalwidth(花瓣寬度)  原資料已事先分為Iris-setosa、Iris-versicolor、Iris-virginica三類  
 ### 作法:
 >將事先分好的三類去除掉,只留下四維資料(sepallength、sepalwidth、petallengh、petalwidth)  
 將這些資料拿去做kmeans  
