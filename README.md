@@ -12,9 +12,9 @@
 最後顯示兩張圖片,左邊是以sepallength與sepalwidth為XY軸作圖,右邊是以petallengh與petalwidth為XY軸作圖  
 ---
 ## kmems_picture.py
-透過opencv套件,將圖片也進行kmeans分群  
+透過opencv套件,將圖片進行kmeans分群  
 ### 作法:
 >程式開始時會要求輸入群心數,並透過手動輸入的群心數來進行k-means分群  
 先讀取圖片,並記錄圖片每個像素點的RGB值  
-程式預設讀取圖片大小為480*360,因此共有480*360筆資料,每筆資料有R、G、B三個維度去進行k-means分群  
+程式預設讀取圖片大小為480x360,因此共有480*360筆資料,每筆資料有R、G、B三個維度去進行k-means分群  
 最後將分為同一群的像素的RGB值都設為群心的RGB值,達到顏色分群的效果
