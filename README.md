@@ -9,4 +9,4 @@
 >將事先分好的三類去除掉,只留下四維資料(sepallength、sepalwidth、petallengh、petalwidth)  
 將這些資料拿去做kmeans,並透過手動輸入的群心來進行k-means分群  
 最後顯示兩張圖片,
-++ 左邊是以sepallength與sepalwidth為XY軸作圖,右邊是以petallengh與petalwidth為XY軸作圖 ++
+==左邊是以sepallength與sepalwidth為XY軸作圖,右邊是以petallengh與petalwidth為XY軸作圖==
