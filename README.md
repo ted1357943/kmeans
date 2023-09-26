@@ -1,9 +1,9 @@
 ## irisdata.py
 使用iris_data(鳶尾花資料集)去做kmeans,iris_data包含:
--sepallength(萼片長度)
--sepalwidth(萼片寬度)
--petallengh(花瓣長度)
--petalwidth(花瓣寬度)
+- sepallength(萼片長度)
+- sepalwidth(萼片寬度)
+- petallengh(花瓣長度)
+- petalwidth(花瓣寬度)
 這四維資料，原資料已事先分為Iris-setosa、Iris-versicolor、Iris-virginica三類
 ###作法:
 >將事先分好的三類去除掉,只留下剩下四維資料(sepallength、sepalwidth、petallengh、petalwidth)
