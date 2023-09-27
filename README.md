@@ -9,7 +9,9 @@
 >將事先分好的三類去除掉,只留下四維資料(sepallength、sepalwidth、petallengh、petalwidth)  
 將這些資料拿去做kmeans  
 程式開始時會要求輸入群心數,並透過手動輸入的群心數來進行k-means分群  
-最後顯示兩張圖片,左邊是以sepallength與sepalwidth為XY軸作圖,右邊是以petallengh與petalwidth為XY軸作圖  
+最後顯示一張圖片  
+>>左上是以sepallength與sepalwidth為XY軸並透過原資料分為三類作圖,右上是以petallengh與petalwidth為XY軸並透過原資料分為三類作圖  
+左下是以sepallength與sepalwidth為XY軸並透過k-means分為k群作圖,右下是以petallengh與petalwidth為XY軸並透過k-means分為k群作圖  
 ---
 ## kmems_picture.py
 透過opencv套件,將圖片進行kmeans分群  

@@ -1,46 +1,81 @@
 import csv
 import random
 import matplotlib.pyplot as plt
+from matplotlib.pyplot import MultipleLocator
 
 
-def dis_count(a, b):
+def dis_count(a, b):  # 計算兩點距離
     dis = (a[0]-eval(b[0]))**2 + (a[1]-eval(b[1]))**2 + \
         (a[2]-eval(b[2]))**2 + (a[3]-eval(b[3]))**2
     return format(dis, '.3f')
 
 
-def equ_judge(x, y):
+def equ_judge(x, y):  # 判斷兩中心點誤差多大
     val = abs((x[0]-y[0])+(x[1]-y[1])+(x[2]-y[2])+(x[3]-y[3]))
     return format(val, '.3f')
 
 
-def plot(result):
+def plot(listReport, result):
     colors = ['r', 'g', 'b', 'y', 'k', 'm', 'c']
-    # 以(SepalLength,SepalWidth)畫圖
-    plt.figure(figsize=(12, 5))
-    plt.subplot(1, 2, 1)
+    plt.figure(figsize=(12, 8))
+
+    # 以(SepalLength,SepalWidth)為XY軸,並以原資料三別畫圖
+    plt.subplot(2, 2, 1)
     plt.xlabel("SepalLength")
     plt.ylabel("SepalWidth")
+    plt.title("original data")
+    for i in range(0, 50):
+        plt.scatter(eval(listReport[i][0]), eval(listReport[i][1]), alpha=.8, color=colors[0],
+                    label=0)
+    for i in range(50, 100):
+        plt.scatter(eval(listReport[i][0]), eval(listReport[i][1]), alpha=.8, color=colors[1],
+                    label=1)
+    for i in range(100, 150):
+        plt.scatter(eval(listReport[i][0]), eval(listReport[i][1]), alpha=.8, color=colors[2],
+                    label=2)
+
+    # 以(PetalLength,PetalWidth)為XY軸,並以原資料三別畫圖
+    plt.subplot(2, 2, 2)
+    plt.xlabel("PetalLength")
+    plt.ylabel("PetalWidth")
+    plt.title("original data")
+    for i in range(0, 50):
+        plt.scatter(eval(listReport[i][2]), eval(listReport[i][3]), alpha=.8, color=colors[0],
+                    label=0)
+    for i in range(50, 100):
+        plt.scatter(eval(listReport[i][2]), eval(listReport[i][3]), alpha=.8, color=colors[1],
+                    label=1)
+    for i in range(100, 150):
+        plt.scatter(eval(listReport[i][2]), eval(listReport[i][3]), alpha=.8, color=colors[2],
+                    label=2)
+
+    # 以(SepalLength,SepalWidth)為XY軸畫出kmeans分群圖
+    plt.subplot(2, 2, 3)
+    plt.xlabel("SepalLength")
+    plt.ylabel("SepalWidth")
+    plt.title("K-means data")
     for i in range(0, eval(k)):
         for j in range(0, len(result)):
             if (result[j][4] == i):
                 plt.scatter(result[j][0], result[j][1], alpha=.8, color=colors[i],
                             label=i)
 
-    # 以(PetalLength,PetalWidth)畫圖
-    plt.subplot(1, 2, 2)
+    # 以(PetalLength,PetalWidth)為XY軸畫出kmeans分群圖
+    plt.subplot(2, 2, 4)
     plt.xlabel("PetalLength")
     plt.ylabel("PetalWidth")
+    plt.title("K-means data")
     for i in range(0, eval(k)):
         for j in range(0, len(result)):
             if (result[j][4] == i):
                 plt.scatter(result[j][2], result[j][3], alpha=.8, color=colors[i],
                             label=i)
+
+    plt.tight_layout()
     plt.show()
 
 
 with open('iris.csv', newline='') as csvfile:            # 開啟 CSV 檔案
-
     # 讀取 CSV 檔案內容
     rows = csv.reader(csvfile)
     listReport = list(rows)
@@ -48,6 +83,7 @@ with open('iris.csv', newline='') as csvfile:            # 開啟 CSV 檔案
 k = input("please enter cluster numbers:\n")
 old_center = [[0]*5 for i in range(eval(k))]
 rand_num = random.sample(range(0, len(listReport)), eval(k))  # 從資料中選k個數
+ori_data = listReport
 
 for i in range(0, eval(k)):  # 紀錄最初中心值
     s = rand_num[i]
@@ -97,10 +133,4 @@ for i in range(0, eval(k)):                         # 將同類排在一起
             result[m][4] = i
             m = m+1
 
-plot(result)
-
-
-'''
-for i in range(0, len(result)):
-    print(result[i])
-'''
+plot(ori_data, result)
